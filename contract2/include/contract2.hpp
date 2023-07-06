@@ -8,17 +8,17 @@ CONTRACT contract2 : public contract {
    public:
       using contract::contract;
 
-      TABLE sometable {
+      TABLE othertable {
 
-         uint64_t                   someotherval;
+         uint64_t                   yetanotherval;
 
-         uint64_t primary_key()const { return someotherval; }
+         uint64_t primary_key()const { return yetanotherval; }
 
       };
 
-      typedef eosio::multi_index<"sometable"_n, sometable> some_table;
+      typedef eosio::multi_index<"othertable"_n, othertable> other_table;
 
-      ACTION hi( name nm );
+      ACTION hi( name nm, contract1::sometable );
 
       using hi_action = action_wrapper<"hi"_n, &contract2::hi>;
 };
